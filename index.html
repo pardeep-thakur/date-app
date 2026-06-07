@@ -276,7 +276,7 @@
     h1,
     h2 {
       margin: 0;
-      color: #670024;
+      color: var(--ink);
       font-family: Georgia, "Times New Roman", serif;
       line-height: 1.02;
       letter-spacing: 0;
@@ -342,7 +342,7 @@
     .btn-secondary {
       border: 1px solid rgba(255, 255, 255, 0.58);
       background: rgba(255, 255, 255, 0.28);
-      color: #681333;
+      color: var(--ink);
       backdrop-filter: blur(16px);
     }
 
@@ -453,7 +453,7 @@
       border: 1px solid rgba(255, 255, 255, 0.42);
       border-radius: var(--radius-lg);
       background: rgba(255, 255, 255, 0.24);
-      color: #5f0f2d;
+      color: var(--ink);
       box-shadow: 0 14px 32px rgba(82, 0, 38, 0.12);
       display: grid;
       place-items: center;
@@ -499,7 +499,7 @@
     }
 
     label {
-      color: #5f0f2d;
+      color: var(--ink);
       font-weight: 950;
     }
 
@@ -674,6 +674,75 @@
     }
 
     @media (max-width: 720px) {
+      /* Mobile contrast & color rendering enhancements */
+      :root {
+        --line: rgba(255, 255, 255, 0.22);
+        --surface: rgba(255, 255, 255, 0.18);
+        --surface-strong: rgba(255, 255, 255, 0.48);
+      }
+
+      body {
+        /* Reduce opacity of overlay gradients so the rich theme background color comes through */
+        background:
+          radial-gradient(circle at 12% 16%, rgba(255, 255, 255, 0.22), transparent 28%),
+          radial-gradient(circle at 84% 14%, rgba(255, 214, 231, 0.15), transparent 28%),
+          radial-gradient(circle at 72% 90%, rgba(251, 113, 133, 0.2), transparent 32%),
+          linear-gradient(135deg, var(--bg-1), var(--bg-2) 44%, var(--bg-3));
+      }
+
+      .panel {
+        background: linear-gradient(145deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.14));
+        border-color: rgba(255, 255, 255, 0.22);
+        box-shadow: 0 16px 48px rgba(76, 5, 34, 0.26);
+      }
+
+      .stepper {
+        background: rgba(255, 255, 255, 0.12);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .food-card {
+        border-color: rgba(255, 255, 255, 0.24);
+        background: rgba(255, 255, 255, 0.18);
+        color: var(--ink);
+      }
+
+      .food-card.selected {
+        background: rgba(255, 255, 255, 0.65);
+        border-color: var(--primary);
+        box-shadow: 0 12px 30px rgba(107, 0, 43, 0.18);
+      }
+
+      .food-card small {
+        color: var(--ink);
+        opacity: 0.95 !important;
+        font-weight: 600;
+      }
+
+      .lead {
+        color: var(--ink);
+        font-weight: 500;
+      }
+
+      .kicker {
+        color: var(--ink);
+        background: rgba(255, 255, 255, 0.4);
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Adjust form inputs for contrast on mobile */
+      input {
+        background: rgba(255, 255, 255, 0.38);
+        border-color: rgba(255, 255, 255, 0.38);
+        color: var(--ink);
+      }
+      input:focus {
+        background: rgba(255, 255, 255, 0.68);
+      }
+      label {
+        color: var(--ink);
+      }
+
       .shell {
         padding: 14px;
       }
@@ -1251,8 +1320,8 @@
 
         <article class="screen" data-screen="celebration">
           <div>
-            <p class="kicker">Podium Ceremony</p>
-            <h2>Choose our Podium Celebration 🍾</h2>
+            <p class="kicker">Podium Celebration Style</p>
+            <h2>Choose our After-Party Spritz 🍾</h2>
             <p class="lead">How do we celebrate finishing P1? (Strategy details are kept private!)</p>
             <div class="choice-grid" id="celebrationGrid"></div>
             <p class="error" id="celebrationError" role="alert"></p>
@@ -1276,7 +1345,7 @@
             <p class="lead">Calendar: updated. Fuel: optimized. Podium: secured.</p>
             <!-- 3D VIP GP Ticket Container -->
             <div class="ticket-container">
-              <div class="gp-ticket" id="gpTicket">
+              <div class="gp-ticket" id="gpTicket" style="cursor: pointer;">
                 <div class="ticket-header">
                   <div class="ticket-badge">VIP PADDOCK PASS</div>
                   <div class="ticket-logo">
@@ -1316,10 +1385,10 @@
                     </div>
                   </div>
                   
-                  <div class="ticket-row" id="ticketCelebrationRow" style="grid-column: span 2; cursor: pointer; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 8px; padding: 10px; margin-top: 4px; transition: background var(--fast); text-align: center;">
+                  <div class="ticket-row" id="ticketCelebrationRow" style="grid-column: span 2; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 8px; padding: 10px; margin-top: 4px; transition: background var(--fast); text-align: center;">
                     <div class="ticket-col" style="align-items: center; width: 100%;">
-                      <span class="ticket-label" style="font-size: 0.62rem; letter-spacing: 1px; color: var(--primary);">🏆 PRIVATE CELEBRATION STRATEGY (TAP TO DECLASSIFY)</span>
-                      <span class="ticket-val" id="ticketCelebration" style="filter: blur(5px); transition: filter 300ms ease; font-size: 0.95rem; margin-top: 4px;">🤫 Bare Chassis</span>
+                      <span class="ticket-label" style="font-size: 0.62rem; letter-spacing: 1px; color: var(--primary); transition: color var(--fast);">🏆 PODIUM CELEBRATION STYLE (CLICK TICKET TO REVEAL)</span>
+                      <span class="ticket-val" id="ticketCelebration" style="filter: blur(6px); transition: filter 300ms ease; font-size: 0.95rem; margin-top: 4px;">🤫 Bare Chassis</span>
                     </div>
                   </div>
                   
@@ -1434,7 +1503,7 @@
         { id: "datetime", label: "Schedule", hint: "Grid time" },
         { id: "track", label: "Circuit", hint: "Choose setting" },
         { id: "activity", label: "Afterparty", hint: "Finish strong" },
-        { id: "celebration", label: "Celebration", hint: "Victory spritz" }
+        { id: "celebration", label: "Celebration Style", hint: "After-Party Spritz" }
       ];
 
       const tracks = [
@@ -1829,7 +1898,12 @@
         $("#ticketCircuit").textContent = selectedTrack ? `${selectedTrack.icon} ${state.track}` : `🏁 ${state.track}`;
         $("#ticketActivity").textContent = selectedActivity ? `${selectedActivity.icon} ${state.activity}` : `🎮 ${state.activity}`;
         $("#ticketCelebration").textContent = selectedCelebration ? `${selectedCelebration.icon} ${state.celebration}` : `🍾 ${state.celebration}`;
-        $("#ticketCelebration").style.filter = "blur(5px)";
+        $("#ticketCelebration").style.filter = "blur(6px)";
+        const labelEl = $("#ticketCelebrationRow .ticket-label");
+        if (labelEl) {
+          labelEl.textContent = "🏆 PODIUM CELEBRATION STYLE (CLICK TICKET TO REVEAL)";
+          labelEl.style.color = "var(--primary)";
+        }
         $("#ticketFuel").textContent = selectedFoodsInfo || "None selected";
         $("#ticketDate").textContent = formatDate(state.date);
         $("#ticketTime").textContent = formatTime(state.time);
@@ -2250,17 +2324,24 @@
         elements.shareInviteBtn.addEventListener("click", () => {
           const selectedTrack = tracks.find((track) => track.label === state.track);
           const selectedActivity = activities.find((act) => act.label === state.activity);
+          const selectedCelebration = celebrations.find((c) => c.label === state.celebration);
           const selectedFoodsInfo = state.foods.map(f => {
             const match = foods.find(item => item.label === f);
             return match ? `${match.icon} ${match.label}` : f;
           }).join(", ");
+
+          const celebrationText = $("#ticketCelebration");
+          const isBlurred = celebrationText ? celebrationText.style.filter !== "none" : true;
+          const celebrationVal = isBlurred 
+            ? "🤫 [Classified - Click Ticket to view]" 
+            : `${selectedCelebration ? selectedCelebration.icon : "🍾"} ${state.celebration}`;
 
           const inviteText = `🏎️ DATE NIGHT GRAND PRIX INVITE 🏁\n` +
             `==================================\n` +
             `Drivers: Pardeep & ${state.name}\n` +
             `📍 Circuit: ${selectedTrack ? selectedTrack.icon : "🏁"} ${state.track}\n` +
             `🎮 Afterparty: ${selectedActivity ? selectedActivity.icon : "🎮"} ${state.activity}\n` +
-            `🏆 Celebration: 🤫 [Classified - Tap Pass to view]\n` +
+            `🏆 Celebration Style: ${celebrationVal}\n` +
             `📅 Grid Date: ${formatDate(state.date)}\n` +
             `⏰ Launch Time: ${formatTime(state.time)}\n` +
             `🍔 Fuel Stop: ${selectedFoodsInfo || "None selected"}\n` +
@@ -2300,13 +2381,24 @@
           });
         }
 
-        // Tap to declassify celebration strategy
-        const celebrationRow = $("#ticketCelebrationRow");
+        // Tap to declassify celebration strategy by clicking the ticket
+        const gpTicket = $("#gpTicket");
         const celebrationText = $("#ticketCelebration");
-        if (celebrationRow && celebrationText) {
-          celebrationRow.addEventListener("click", () => {
+        if (gpTicket && celebrationText) {
+          gpTicket.addEventListener("click", () => {
             const isBlurred = celebrationText.style.filter !== "none";
-            celebrationText.style.filter = isBlurred ? "none" : "blur(5px)";
+            celebrationText.style.filter = isBlurred ? "none" : "blur(6px)";
+            
+            const labelEl = $("#ticketCelebrationRow .ticket-label");
+            if (labelEl) {
+              if (isBlurred) {
+                labelEl.textContent = "🏆 PODIUM CELEBRATION STYLE (REVEALED)";
+                labelEl.style.color = "var(--primary-2)";
+              } else {
+                labelEl.textContent = "🏆 PODIUM CELEBRATION STYLE (CLICK TICKET TO REVEAL)";
+                labelEl.style.color = "var(--primary)";
+              }
+            }
             triggerHaptic(20);
           });
         }
