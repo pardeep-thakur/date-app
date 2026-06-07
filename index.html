@@ -824,6 +824,293 @@
       }
     }
 
+    /* Team Liveries */
+    body.theme-ferrari {
+      --bg-1: #ef4444;
+      --bg-2: #dc2626;
+      --bg-3: #7f1d1d;
+      --primary: #e10600;
+      --primary-2: #facc15;
+      --ink: #3f000b;
+      --ink-soft: #7f1d1d;
+      --focus: #facc15;
+    }
+
+    body.theme-mercedes {
+      --bg-1: #94a3b8;
+      --bg-2: #475569;
+      --bg-3: #0f172a;
+      --primary: #00a19c;
+      --primary-2: #06b6d4;
+      --ink: #0f172a;
+      --ink-soft: #334155;
+      --focus: #00a19c;
+    }
+
+    body.theme-aston {
+      --bg-1: #064e3b;
+      --bg-2: #022c22;
+      --bg-3: #02140f;
+      --primary: #00594f;
+      --primary-2: #c9f227;
+      --ink: #022c22;
+      --ink-soft: #0f5132;
+      --focus: #c9f227;
+    }
+
+    body.theme-redbull {
+      --bg-1: #1e3a8a;
+      --bg-2: #1e1b4b;
+      --bg-3: #030712;
+      --primary: #ef4444;
+      --primary-2: #eab308;
+      --ink: #090d16;
+      --ink-soft: #1e293b;
+      --focus: #eab308;
+    }
+
+    /* Theme Selector UI */
+    .theme-selector-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .theme-dropdown {
+      position: absolute;
+      top: 52px;
+      right: 0;
+      background: rgba(255, 255, 255, 0.22);
+      backdrop-filter: blur(28px);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-12px);
+      transition: opacity var(--fast), transform var(--fast), visibility var(--fast);
+      z-index: 200;
+    }
+
+    .theme-dropdown.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .theme-opt {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 2px solid white;
+      cursor: pointer;
+      transition: transform var(--fast);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+      padding: 0;
+    }
+
+    .theme-opt:hover {
+      transform: scale(1.15);
+    }
+
+    .theme-opt.active {
+      border-color: var(--focus);
+      transform: scale(1.1);
+    }
+
+
+
+    /* Telemetry HUD styles */
+    .telemetry-hud {
+      margin-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      padding-top: 20px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    .telemetry-title {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      color: rgba(255, 255, 255, 0.6);
+      margin: 0 0 12px;
+      font-weight: 900;
+    }
+
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .telemetry-item {
+      background: rgba(0, 0, 0, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 8px 10px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .telemetry-label {
+      font-size: 0.62rem;
+      color: rgba(255, 255, 255, 0.5);
+      font-weight: 900;
+    }
+
+    .telemetry-value {
+      font-size: 0.9rem;
+      color: #fff;
+      font-weight: 900;
+    }
+
+    .telemetry-status {
+      margin-top: 12px;
+      font-size: 0.68rem;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 6px;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color var(--fast), background var(--fast), border-color var(--fast);
+    }
+
+    .telemetry-status.warning {
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(239, 68, 68, 0.36);
+      animation: telemetry-blink 1s infinite;
+    }
+
+    @keyframes telemetry-blink {
+      50% {
+        opacity: 0.55;
+      }
+    }
+
+    /* VIP GP Ticket Pass styles */
+    .ticket-container {
+      perspective: 1000px;
+      margin: 24px auto 0;
+      width: min(480px, 100%);
+    }
+
+    .gp-ticket {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.16));
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 48px rgba(97, 0, 43, 0.15);
+      backdrop-filter: blur(28px);
+      padding: 22px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 150ms ease-out, box-shadow 150ms ease-out;
+      transform-style: preserve-3d;
+      text-align: left;
+    }
+
+    .gp-ticket::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: repeating-linear-gradient(90deg, var(--primary), var(--primary) 10px, var(--primary-2) 10px, var(--primary-2) 20px);
+    }
+
+    .ticket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px dashed rgba(255, 255, 255, 0.35);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+
+    .ticket-badge {
+      background: var(--primary);
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 950;
+      padding: 4px 10px;
+      border-radius: 999px;
+      letter-spacing: 1px;
+    }
+
+    .ticket-body {
+      display: grid;
+      gap: 14px;
+    }
+
+    .ticket-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .ticket-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ticket-label {
+      font-size: 0.65rem;
+      color: var(--ink-soft);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .ticket-val {
+      font-size: 0.95rem;
+      color: var(--ink);
+      font-weight: 950;
+      margin-top: 2px;
+    }
+
+    .ticket-footer {
+      border-top: 2px dashed rgba(255, 255, 255, 0.35);
+      margin-top: 16px;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .ticket-barcode {
+      display: flex;
+      align-items: center;
+      gap: 1px;
+      height: 24px;
+      background: rgba(255, 255, 255, 0.3);
+      padding: 4px;
+      border-radius: 4px;
+    }
+
+    .barcode-line {
+      height: 100%;
+      background: var(--ink);
+    }
+
+    .ticket-status {
+      font-size: 0.78rem;
+      color: var(--primary);
+      font-weight: 950;
+      letter-spacing: 1px;
+    }
+
+    .share-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       *,
@@ -839,6 +1126,8 @@
 </head>
 
 <body>
+
+
   <div class="ambient" id="ambient" aria-hidden="true"></div>
   <div class="trail-layer" id="trailLayer" aria-hidden="true"></div>
   <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
@@ -859,6 +1148,17 @@
           Prix</span>
       </div>
       <div class="controls">
+        <div class="theme-selector-container">
+          <button class="icon-btn" id="themeBtn" type="button" aria-label="Change livery theme">🎨</button>
+          <div class="theme-dropdown" id="themeDropdown">
+            <button class="theme-opt active" data-theme="default" title="Cupid Rose (Default)" style="background: linear-gradient(135deg, #ff5c8a, #e11d48);"></button>
+            <button class="theme-opt" data-theme="ferrari" title="Scuderia Ferrari" style="background: linear-gradient(135deg, #ef4444, #e10600);"></button>
+            <button class="theme-opt" data-theme="mercedes" title="Mercedes-AMG" style="background: linear-gradient(135deg, #94a3b8, #00a19c);"></button>
+            <button class="theme-opt" data-theme="aston" title="Aston Martin" style="background: linear-gradient(135deg, #064e3b, #c9f227);"></button>
+            <button class="theme-opt" data-theme="redbull" title="Red Bull Racing" style="background: linear-gradient(135deg, #1e3a8a, #eab308);"></button>
+          </div>
+        </div>
+        <button class="icon-btn" id="audioBtn" type="button" aria-label="Toggle sound">🔊</button>
         <button class="icon-btn" id="resetBtn" type="button" aria-label="Start over">↺</button>
       </div>
     </header>
@@ -934,6 +1234,36 @@
         </article>
 
 
+        <article class="screen" data-screen="activity">
+          <div>
+            <p class="kicker">Post-Race Event</p>
+            <h2>Choose our Afterparty activity 🎮</h2>
+            <p class="lead">How do we celebrate securing the podium?</p>
+            <div class="choice-grid" id="activityGrid"></div>
+            <p class="error" id="activityError" role="alert"></p>
+            <div class="actions">
+              <button class="btn btn-secondary" data-back="track" type="button">Back</button>
+              <button class="btn btn-primary" id="activityNextBtn" type="button">Continue</button>
+            </div>
+          </div>
+        </article>
+
+
+        <article class="screen" data-screen="celebration">
+          <div>
+            <p class="kicker">Podium Ceremony</p>
+            <h2>Choose our Podium Celebration 🍾</h2>
+            <p class="lead">How do we celebrate finishing P1? (Strategy details are kept private!)</p>
+            <div class="choice-grid" id="celebrationGrid"></div>
+            <p class="error" id="celebrationError" role="alert"></p>
+            <div class="actions">
+              <button class="btn btn-secondary" data-back="activity" type="button">Back</button>
+              <button class="btn btn-primary" id="celebrationNextBtn" type="button">Continue</button>
+            </div>
+          </div>
+        </article>
+
+
         <article class="screen" data-screen="confirmation">
           <div>
             <div class="beating-hearts-container">
@@ -944,11 +1274,104 @@
             <p class="kicker">🏁 P1 - Checkered Flag</p>
             <h2>Yay! Our date is officially booked! 🏆</h2>
             <p class="lead">Calendar: updated. Fuel: optimized. Podium: secured.</p>
-            <div class="summary" id="summary"></div>
-            <p
-              style="text-align: center; font-size: 1.15rem; font-weight: bold; color: #be123c; margin: 24px auto 0; max-width: 520px; line-height: 1.5; font-family: Georgia, serif; font-style: italic;">
-              "I can't wait to spend this perfect night with you, Shraddha! ❤️🏎️"
+            <!-- 3D VIP GP Ticket Container -->
+            <div class="ticket-container">
+              <div class="gp-ticket" id="gpTicket">
+                <div class="ticket-header">
+                  <div class="ticket-badge">VIP PADDOCK PASS</div>
+                  <div class="ticket-logo">
+                    <svg viewBox="0 0 80 25" style="width: 48px; height: 20px; fill: var(--primary);">
+                      <path d="M0 25 L8 0 H28 L25 8 H14 L11 15 H24 L21 21 H10 L9 25 Z M32 25 L40 0 H48 L40 25 Z M50 0 L42 25 H38 L46 0 Z" />
+                    </svg>
+                  </div>
+                </div>
+                
+                <div class="ticket-body">
+                  <div class="ticket-row">
+                    <div class="ticket-col">
+                      <span class="ticket-label">DRIVER 1</span>
+                      <span class="ticket-val">Pardeep</span>
+                    </div>
+                    <div class="ticket-col">
+                      <span class="ticket-label">DRIVER 2</span>
+                      <span class="ticket-val" id="ticketGuestName">Shraddha</span>
+                    </div>
+                  </div>
+                  
+                  <div class="ticket-row">
+                    <div class="ticket-col">
+                      <span class="ticket-label">CIRCUIT (VENUE)</span>
+                      <span class="ticket-val" id="ticketCircuit">Monaco Starlight 🌃</span>
+                    </div>
+                    <div class="ticket-col">
+                      <span class="ticket-label">AFTERPARTY ACTIVITY</span>
+                      <span class="ticket-val" id="ticketActivity">Starlit Walk 🚶</span>
+                    </div>
+                  </div>
+                  
+                  <div class="ticket-row">
+                    <div class="ticket-col" style="grid-column: span 2;">
+                      <span class="ticket-label">FUEL SELECTIONS</span>
+                      <span class="ticket-val" id="ticketFuel">Pizza, Sushi</span>
+                    </div>
+                  </div>
+                  
+                  <div class="ticket-row" id="ticketCelebrationRow" style="grid-column: span 2; cursor: pointer; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.22); border-radius: 8px; padding: 10px; margin-top: 4px; transition: background var(--fast); text-align: center;">
+                    <div class="ticket-col" style="align-items: center; width: 100%;">
+                      <span class="ticket-label" style="font-size: 0.62rem; letter-spacing: 1px; color: var(--primary);">🏆 PRIVATE CELEBRATION STRATEGY (TAP TO DECLASSIFY)</span>
+                      <span class="ticket-val" id="ticketCelebration" style="filter: blur(5px); transition: filter 300ms ease; font-size: 0.95rem; margin-top: 4px;">🤫 Bare Chassis</span>
+                    </div>
+                  </div>
+                  
+                  <div class="ticket-row">
+                    <div class="ticket-col">
+                      <span class="ticket-label">GRID DATE</span>
+                      <span class="ticket-val" id="ticketDate">June 14, 2026</span>
+                    </div>
+                    <div class="ticket-col">
+                      <span class="ticket-label">LAUNCH TIME</span>
+                      <span class="ticket-val" id="ticketTime">8:00 PM</span>
+                    </div>
+                  </div>
+
+                  <!-- Grid Launch Countdown -->
+                  <div class="ticket-row" id="countdownRow" style="grid-column: span 2; display: none; margin-top: 14px; border-top: 1px dashed rgba(255, 255, 255, 0.35); padding-top: 12px; text-align: center; justify-content: center;">
+                    <div class="ticket-col" style="align-items: center; width: 100%;">
+                      <span class="ticket-label" style="font-size: 0.62rem; letter-spacing: 1.5px; color: var(--primary);">GRID LAUNCH COUNTDOWN</span>
+                      <span class="ticket-val" id="countdownVal" style="font-family: ui-monospace, monospace; font-size: 1.12rem; color: var(--ink); margin-top: 4px; letter-spacing: 0.5px;">00d : 00h : 00m : 00s</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="ticket-footer">
+                  <div class="ticket-barcode">
+                    <div class="barcode-line" style="width: 2px;"></div>
+                    <div class="barcode-line" style="width: 4px;"></div>
+                    <div class="barcode-line" style="width: 1px;"></div>
+                    <div class="barcode-line" style="width: 3px;"></div>
+                    <div class="barcode-line" style="width: 1px;"></div>
+                    <div class="barcode-line" style="width: 2px;"></div>
+                    <div class="barcode-line" style="width: 4px;"></div>
+                    <div class="barcode-line" style="width: 1px;"></div>
+                    <div class="barcode-line" style="width: 3px;"></div>
+                    <div class="barcode-line" style="width: 2px;"></div>
+                    <div class="barcode-line" style="width: 1px;"></div>
+                    <div class="barcode-line" style="width: 4px;"></div>
+                  </div>
+                  <div class="ticket-status">CONFIRMED (P1)</div>
+                </div>
+              </div>
+            </div>
+
+            <p id="personalMsg"
+              style="text-align: center; font-size: 1.15rem; font-weight: bold; color: var(--primary); margin: 24px auto 0; max-width: 520px; line-height: 1.5; font-family: Georgia, serif; font-style: italic;">
+              "I can't wait to spend this perfect night with you, <span id="msgGuestName">Shraddha</span>! ❤️🏎️"
             </p>
+
+            <div class="share-actions">
+              <button class="btn btn-secondary" id="shareInviteBtn" type="button" style="min-width: 220px;">Copy Invite Details 📋</button>
+            </div>
+
             <div class="actions">
               <button class="btn btn-primary" id="bookAgainBtn" type="button">Plan Another</button>
             </div>
@@ -959,6 +1382,29 @@
       <aside class="stepper" aria-label="Booking progress">
         <p class="stepper-title">Our little plan</p>
         <div class="step-list" id="stepList"></div>
+
+        <div class="telemetry-hud" id="telemetryHud">
+          <p class="telemetry-title">LIVE TELEMETRY</p>
+          <div class="telemetry-grid">
+            <div class="telemetry-item">
+              <span class="telemetry-label">SPEED</span>
+              <span class="telemetry-value" id="telemetrySpeed">0 km/h</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-label">G-FORCE</span>
+              <span class="telemetry-value" id="telemetryGforce">1.0 G</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-label">HEART RATE</span>
+              <span class="telemetry-value" id="telemetryHeartRate">72 bpm</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="telemetry-label">DRS</span>
+              <span class="telemetry-value" id="telemetryDrs">DISABLED</span>
+            </div>
+          </div>
+          <div class="telemetry-status" id="telemetryStatus">STATUS: NOMINAL</div>
+        </div>
       </aside>
     </main>
   </div>
@@ -986,7 +1432,9 @@
         { id: "landing", label: "Green Light", hint: "Say yes" },
         { id: "food", label: "Fueling", hint: "Pick a craving" },
         { id: "datetime", label: "Schedule", hint: "Grid time" },
-        { id: "track", label: "Circuit", hint: "Choose setting" }
+        { id: "track", label: "Circuit", hint: "Choose setting" },
+        { id: "activity", label: "Afterparty", hint: "Finish strong" },
+        { id: "celebration", label: "Celebration", hint: "Victory spritz" }
       ];
 
       const tracks = [
@@ -996,13 +1444,31 @@
         { icon: "🍿", label: "Drive-in Cinema", desc: "Classic movie night" }
       ];
 
+      const activities = [
+        { icon: "🚶", label: "Starlit Walk", desc: "Scenic walk & talk under the stars" },
+        { icon: "🎮", label: "Arcade GP", desc: "Mario Kart & racing games duel" },
+        { icon: "☕", label: "Late-Night Pitstop", desc: "Cozy hot chocolate or coffee" },
+        { icon: "🍿", label: "Paddock Cozy Replay", desc: "Movie night under warm blankets" }
+      ];
+
+      const celebrations = [
+        { icon: "🍾", label: "Champagne Shower", desc: "A warm bubble bath or shared shower" },
+        { icon: "💆", label: "Sensory Pitstop", desc: "Relaxing full-body massage with warm oils" },
+        { icon: "💋", label: "Victory Lap Kisses", desc: "Non-stop kisses on your favorite spots" },
+        { icon: "🤫", label: "Bare Chassis", desc: "No livery, staying under the sheets" }
+      ];
+
       const state = {
         screen: "landing",
         foods: [],
         date: "",
         time: "",
         track: "",
-        name: "Shraddha"
+        activity: "",
+        celebration: "",
+        name: "Shraddha",
+        theme: "default",
+        muted: false
       };
 
       const $ = (selector) => document.querySelector(selector);
@@ -1027,13 +1493,59 @@
         trackGrid: $("#trackGrid"),
         trackError: $("#trackError"),
         trackNextBtn: $("#trackNextBtn"),
-        summary: $("#summary"),
+        activityGrid: $("#activityGrid"),
+        activityError: $("#activityError"),
+        activityNextBtn: $("#activityNextBtn"),
+        celebrationGrid: $("#celebrationGrid"),
+        celebrationError: $("#celebrationError"),
+        celebrationNextBtn: $("#celebrationNextBtn"),
         resetBtn: $("#resetBtn"),
         bookAgainBtn: $("#bookAgainBtn"),
-        toast: $("#toast")
+        toast: $("#toast"),
+        
+        // New controls
+        themeBtn: $("#themeBtn"),
+        themeDropdown: $("#themeDropdown"),
+        audioBtn: $("#audioBtn"),
+        shareInviteBtn: $("#shareInviteBtn"),
+        gpTicket: $("#gpTicket"),
+        ticketActivity: $("#ticketActivity"),
+        ticketCelebration: $("#ticketCelebration"),
+        
+        // Telemetry
+        telemetrySpeed: $("#telemetrySpeed"),
+        telemetryGforce: $("#telemetryGforce"),
+        telemetryHeartRate: $("#telemetryHeartRate"),
+        telemetryDrs: $("#telemetryDrs"),
+        telemetryStatus: $("#telemetryStatus")
       };
 
       let lastTrail = 0;
+      let countdownTimerInterval = null;
+
+      // Telemetry variables
+      let lastX = 0;
+      let lastY = 0;
+      let lastTime = 0;
+      let targetSpeed = 0;
+      let currentSpeed = 0;
+      let targetGforce = 1.0;
+      let currentGforce = 1.0;
+      let heartRate = 72;
+      let lastMouseActive = Date.now();
+      let isNoButtonClose = false;
+
+
+      const f1Excuses = [
+        "DRS Failure! 😅",
+        "Tyres dead! 😅",
+        "Box this lap! 😅",
+        "No Power! 😅",
+        "Brake overheat! 😅",
+        "Understeer! 😅",
+        "Gearbox fault! 😅",
+        "Engine halt! 😅"
+      ];
 
       function saveState() {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
@@ -1106,6 +1618,8 @@
         if (screenName !== "landing") {
           elements.noBtn.classList.remove("fleeing");
           elements.noBtn.removeAttribute("style");
+          elements.noBtn.textContent = "Box, Box! NO 😅";
+          isNoButtonClose = false;
         }
 
         updateStepper();
@@ -1194,6 +1708,107 @@
         });
       }
 
+      function renderActivities() {
+        elements.activityGrid.innerHTML = activities.map((act) => `
+          <button class="food-card" type="button" data-activity="${act.label}" aria-pressed="false">
+            <span class="food-icon" aria-hidden="true">${act.icon}</span>
+            <span>${act.label}</span>
+            <small style="font-size: 0.74rem; font-weight: normal; opacity: 0.85; margin-top: 4px; display: block; text-align: center;">${act.desc}</small>
+          </button>
+        `).join("");
+
+        elements.activityGrid.addEventListener("click", (event) => {
+          const card = event.target.closest(".food-card");
+          if (!card) return;
+          triggerHaptic(15);
+          state.activity = card.dataset.activity;
+          elements.activityError.textContent = "";
+          saveState();
+          updateActivitySelection();
+        });
+
+        updateActivitySelection();
+      }
+
+      function updateActivitySelection() {
+        $$("[data-activity]").forEach((card) => {
+          const selected = card.dataset.activity === state.activity;
+          card.classList.toggle("selected", selected);
+          card.setAttribute("aria-pressed", String(selected));
+        });
+      }
+
+      function renderCelebrations() {
+        elements.celebrationGrid.innerHTML = celebrations.map((item) => `
+          <button class="food-card" type="button" data-celebration="${item.label}" aria-pressed="false">
+            <span class="food-icon" aria-hidden="true">${item.icon}</span>
+            <span>${item.label}</span>
+            <small style="font-size: 0.74rem; font-weight: normal; opacity: 0.85; margin-top: 4px; display: block; text-align: center;">${item.desc}</small>
+          </button>
+        `).join("");
+
+        elements.celebrationGrid.addEventListener("click", (event) => {
+          const card = event.target.closest(".food-card");
+          if (!card) return;
+          triggerHaptic(15);
+          state.celebration = card.dataset.celebration;
+          elements.celebrationError.textContent = "";
+          saveState();
+          updateCelebrationSelection();
+        });
+
+        updateCelebrationSelection();
+      }
+
+      function updateCelebrationSelection() {
+        $$("[data-celebration]").forEach((card) => {
+          const selected = card.dataset.celebration === state.celebration;
+          card.classList.toggle("selected", selected);
+          card.setAttribute("aria-pressed", String(selected));
+        });
+      }
+
+      function startCountdownTimer() {
+        if (countdownTimerInterval) window.clearInterval(countdownTimerInterval);
+        const countdownRow = $("#countdownRow");
+        const countdownVal = $("#countdownVal");
+        if (!countdownRow || !countdownVal) return;
+
+        function update() {
+          if (!state.date || !state.time) {
+            countdownRow.style.display = "none";
+            return;
+          }
+
+          const targetDate = new Date(`${state.date}T${state.time}`);
+          const now = new Date();
+          const difference = targetDate.getTime() - now.getTime();
+
+          if (difference <= 0) {
+            countdownRow.style.display = "flex";
+            countdownVal.textContent = "ITS HAMMER TIME! 🏁🔥";
+            countdownVal.style.color = "var(--primary)";
+            return;
+          }
+
+          countdownRow.style.display = "flex";
+          const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+          const dStr = String(days).padStart(2, "0");
+          const hStr = String(hours).padStart(2, "0");
+          const mStr = String(minutes).padStart(2, "0");
+          const sStr = String(seconds).padStart(2, "0");
+
+          countdownVal.textContent = `${dStr}d : ${hStr}h : ${mStr}m : ${sStr}s`;
+        }
+
+        update();
+        countdownTimerInterval = window.setInterval(update, 1000);
+      }
+
       function renderFormValues() {
         elements.dateInput.min = todayISO();
         elements.dateInput.value = state.date;
@@ -1203,17 +1818,25 @@
 
       function renderSummary() {
         const selectedTrack = tracks.find((track) => track.label === state.track);
+        const selectedActivity = activities.find((act) => act.label === state.activity);
+        const selectedCelebration = celebrations.find((c) => c.label === state.celebration);
         const selectedFoodsInfo = state.foods.map(f => {
           const match = foods.find(item => item.label === f);
           return match ? `${match.icon} ${match.label}` : f;
         }).join(", ");
 
-        elements.summary.innerHTML = `
-          <div class="summary-row"><span>Fuel Choices</span><span>${escapeHTML(selectedFoodsInfo || "None selected")}</span></div>
-          <div class="summary-row"><span>Circuit</span><span>${selectedTrack ? selectedTrack.icon : "🏁"} ${escapeHTML(state.track)}</span></div>
-          <div class="summary-row"><span>Race Date</span><span>${formatDate(state.date)}</span></div>
-          <div class="summary-row"><span>Grid Time</span><span>${formatTime(state.time)}</span></div>
-        `;
+        $("#ticketGuestName").textContent = state.name;
+        $("#ticketCircuit").textContent = selectedTrack ? `${selectedTrack.icon} ${state.track}` : `🏁 ${state.track}`;
+        $("#ticketActivity").textContent = selectedActivity ? `${selectedActivity.icon} ${state.activity}` : `🎮 ${state.activity}`;
+        $("#ticketCelebration").textContent = selectedCelebration ? `${selectedCelebration.icon} ${state.celebration}` : `🍾 ${state.celebration}`;
+        $("#ticketCelebration").style.filter = "blur(5px)";
+        $("#ticketFuel").textContent = selectedFoodsInfo || "None selected";
+        $("#ticketDate").textContent = formatDate(state.date);
+        $("#ticketTime").textContent = formatTime(state.time);
+        
+        $("#msgGuestName").textContent = state.name;
+
+        startCountdownTimer();
       }
 
       function moveNoButton() {
@@ -1227,14 +1850,28 @@
         elements.noBtn.classList.add("fleeing");
         elements.noBtn.style.left = `${x}px`;
         elements.noBtn.style.top = `${y}px`;
+
+        const excuse = f1Excuses[Math.floor(Math.random() * f1Excuses.length)];
+        elements.noBtn.textContent = excuse;
       }
 
       function moveNoButtonIfClose(x, y) {
-        if (state.screen !== "landing") return;
+        if (state.screen !== "landing") {
+          isNoButtonClose = false;
+          return;
+        }
         const rect = elements.noBtn.getBoundingClientRect();
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
-        if (Math.hypot(x - centerX, y - centerY) < 138) moveNoButton();
+        const distance = Math.hypot(x - centerX, y - centerY);
+
+        if (distance < 138) {
+          moveNoButton();
+          isNoButtonClose = true;
+          triggerHaptic(20);
+        } else if (distance > 200) {
+          isNoButtonClose = false;
+        }
       }
 
       function validateDateTime() {
@@ -1302,6 +1939,7 @@
       }
 
       function playEngineSound(volume = 0.05, duration = 1.0, isLoudYes = false) {
+        if (state.muted) return;
         try {
           const playVolume = isLoudYes ? 0.6 : 0.25;
           const audio = new Audio(isLoudYes ? 'f1_yes.mp3' : 'f1_blip.mp3');
@@ -1312,19 +1950,133 @@
         }
       }
 
+      function applyTheme(themeName) {
+        state.theme = themeName || "default";
+        document.body.classList.remove("theme-ferrari", "theme-mercedes", "theme-aston", "theme-redbull");
+        if (state.theme !== "default") {
+          document.body.classList.add(`theme-${state.theme}`);
+        }
+        $$(".theme-opt").forEach(opt => {
+          opt.classList.toggle("active", opt.dataset.theme === state.theme);
+        });
+        saveState();
+      }
+
+      function updateAudioBtn() {
+        elements.audioBtn.textContent = state.muted ? "🔇" : "🔊";
+      }
+
+      function loadNameFromURL() {
+        const params = new URLSearchParams(window.location.search);
+        const name = params.get("name");
+        if (name && name.trim()) {
+          state.name = escapeHTML(name.trim());
+        } else if (!state.name) {
+          state.name = "Shraddha";
+        }
+        saveState();
+      }
+
       function resetAll() {
+        if (countdownTimerInterval) {
+          window.clearInterval(countdownTimerInterval);
+          countdownTimerInterval = null;
+        }
         Object.assign(state, {
           screen: "landing",
           foods: [],
           date: "",
           time: "",
           track: "",
-          name: "Shraddha"
+          activity: "",
+          celebration: "",
+          name: "Shraddha",
+          theme: "default",
+          muted: state.muted
         });
         localStorage.removeItem(STORAGE_KEY);
+        applyTheme("default");
+        loadNameFromURL();
         renderFormValues();
         updateFoodSelection();
+        updateTrackSelection();
+        updateActivitySelection();
+        updateCelebrationSelection();
         showScreen("landing");
+      }
+
+      function startTelemetryLoop() {
+        window.setInterval(() => {
+          currentSpeed = Math.round(currentSpeed + (targetSpeed - currentSpeed) * 0.15);
+          currentGforce = Number((currentGforce + (targetGforce - currentGforce) * 0.15).toFixed(1));
+
+          if (Date.now() - lastMouseActive > 300) {
+            targetSpeed = 0;
+            targetGforce = 1.0;
+          }
+
+          if (elements.telemetrySpeed) {
+            elements.telemetrySpeed.textContent = `${currentSpeed} km/h`;
+          }
+          if (elements.telemetryGforce) {
+            elements.telemetryGforce.textContent = `${currentGforce.toFixed(1)} G`;
+          }
+        }, 60);
+
+        window.setInterval(() => {
+          if (document.hidden) return;
+
+          let targetHeartRate = 72;
+          let dDrs = "DISABLED";
+          let dStatus = "STATUS: NOMINAL";
+          let isWarning = false;
+
+          if (state.screen === "landing") {
+            targetHeartRate = isNoButtonClose ? 162 : 76;
+            if (isNoButtonClose) {
+              dStatus = "WARNING: DRS FAILURE";
+              isWarning = true;
+            } else {
+              dStatus = "GRID READY";
+            }
+
+            const yesRect = elements.yesBtn.getBoundingClientRect();
+            const distToYes = Math.hypot(lastX - (yesRect.left + yesRect.width/2), lastY - (yesRect.top + yesRect.height/2));
+            if (distToYes < 140) {
+              dDrs = "ACTIVE 🚀";
+              targetHeartRate = 95;
+            }
+          } else if (state.screen === "food") {
+            targetHeartRate = 80;
+            dStatus = "FUEL STOP ACTIVE";
+          } else if (state.screen === "datetime") {
+            targetHeartRate = 86;
+            dStatus = "QUALIFYING ACTIVE";
+          } else if (state.screen === "track") {
+            targetHeartRate = 92;
+            dStatus = "WARMUP LAP";
+          } else if (state.screen === "activity") {
+            targetHeartRate = 98;
+            dStatus = "RACE STRATEGY";
+          } else if (state.screen === "confirmation") {
+            targetHeartRate = 138;
+            dStatus = "P1 - CHECKERED FLAG 🏆";
+          }
+
+          heartRate = Math.round(heartRate + (targetHeartRate - heartRate) * 0.08);
+
+          if (elements.telemetryHeartRate) {
+            elements.telemetryHeartRate.textContent = `${heartRate} bpm`;
+          }
+          if (elements.telemetryDrs) {
+            elements.telemetryDrs.textContent = dDrs;
+            elements.telemetryDrs.style.color = dDrs.includes("ACTIVE") ? "#22c55e" : "#fff";
+          }
+          if (elements.telemetryStatus) {
+            elements.telemetryStatus.textContent = dStatus;
+            elements.telemetryStatus.classList.toggle("warning", isWarning);
+          }
+        }, 100);
       }
 
       function bindEvents() {
@@ -1337,6 +2089,23 @@
         }, { passive: false });
 
         document.addEventListener("mousemove", (event) => {
+          const now = Date.now();
+          if (lastTime > 0) {
+            const dt = now - lastTime;
+            if (dt > 10) {
+              const dx = event.clientX - lastX;
+              const dy = event.clientY - lastY;
+              const dist = Math.hypot(dx, dy);
+              const velocity = dist / dt;
+              targetSpeed = Math.min(340, Math.round(velocity * 160));
+              targetGforce = 1.0 + Math.min(4.2, (velocity * 2.5));
+            }
+          }
+          lastX = event.clientX;
+          lastY = event.clientY;
+          lastTime = now;
+          lastMouseActive = now;
+
           moveNoButtonIfClose(event.clientX, event.clientY);
           createTrail(event.clientX, event.clientY);
         });
@@ -1344,6 +2113,23 @@
         document.addEventListener("touchmove", (event) => {
           const touch = event.touches[0];
           if (!touch) return;
+          const now = Date.now();
+          if (lastTime > 0) {
+            const dt = now - lastTime;
+            if (dt > 10) {
+              const dx = touch.clientX - lastX;
+              const dy = touch.clientY - lastY;
+              const dist = Math.hypot(dx, dy);
+              const velocity = dist / dt;
+              targetSpeed = Math.min(340, Math.round(velocity * 160));
+              targetGforce = 1.0 + Math.min(4.2, (velocity * 2.5));
+            }
+          }
+          lastX = touch.clientX;
+          lastY = touch.clientY;
+          lastTime = now;
+          lastMouseActive = now;
+
           moveNoButtonIfClose(touch.clientX, touch.clientY);
           createTrail(touch.clientX, touch.clientY);
         }, { passive: true });
@@ -1380,6 +2166,22 @@
             elements.trackError.textContent = "Select a circuit theme for our GP.";
             return;
           }
+          showScreen("activity");
+        });
+
+        elements.activityNextBtn.addEventListener("click", () => {
+          if (!state.activity) {
+            elements.activityError.textContent = "Choose an Afterparty event activity.";
+            return;
+          }
+          showScreen("celebration");
+        });
+
+        elements.celebrationNextBtn.addEventListener("click", () => {
+          if (!state.celebration) {
+            elements.celebrationError.textContent = "Choose a Podium Celebration strategy.";
+            return;
+          }
           launchConfetti();
           showScreen("confirmation");
         });
@@ -1414,6 +2216,100 @@
             triggerHaptic(12);
           }
         }, { passive: true });
+
+        // Mute button click
+        elements.audioBtn.addEventListener("click", () => {
+          state.muted = !state.muted;
+          updateAudioBtn();
+          saveState();
+          triggerHaptic(15);
+        });
+
+        // Theme selector click
+        elements.themeBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          elements.themeDropdown.classList.toggle("show");
+          triggerHaptic(15);
+        });
+
+        document.addEventListener("click", () => {
+          elements.themeDropdown.classList.remove("show");
+        });
+
+        elements.themeDropdown.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const btn = e.target.closest(".theme-opt");
+          if (!btn) return;
+          triggerHaptic(20);
+          const selectedTheme = btn.dataset.theme;
+          applyTheme(selectedTheme);
+          playEngineSound(0.05, 0.5, false);
+        });
+
+        // Copy Invite details
+        elements.shareInviteBtn.addEventListener("click", () => {
+          const selectedTrack = tracks.find((track) => track.label === state.track);
+          const selectedActivity = activities.find((act) => act.label === state.activity);
+          const selectedFoodsInfo = state.foods.map(f => {
+            const match = foods.find(item => item.label === f);
+            return match ? `${match.icon} ${match.label}` : f;
+          }).join(", ");
+
+          const inviteText = `🏎️ DATE NIGHT GRAND PRIX INVITE 🏁\n` +
+            `==================================\n` +
+            `Drivers: Pardeep & ${state.name}\n` +
+            `📍 Circuit: ${selectedTrack ? selectedTrack.icon : "🏁"} ${state.track}\n` +
+            `🎮 Afterparty: ${selectedActivity ? selectedActivity.icon : "🎮"} ${state.activity}\n` +
+            `🏆 Celebration: 🤫 [Classified - Tap Pass to view]\n` +
+            `📅 Grid Date: ${formatDate(state.date)}\n` +
+            `⏰ Launch Time: ${formatTime(state.time)}\n` +
+            `🍔 Fuel Stop: ${selectedFoodsInfo || "None selected"}\n` +
+            `Status: Confirmed P1! Lights out and away we go! 🏆\n` +
+            `==================================`;
+
+          navigator.clipboard.writeText(inviteText).then(() => {
+            showToast("Invite details copied to clipboard! 📋");
+            triggerHaptic(30);
+          }).catch(err => {
+            console.error("Could not copy text: ", err);
+            showToast("Failed to copy details.");
+          });
+        });
+
+        // 3D Ticket hover rotation
+        const ticketContainer = $(".ticket-container");
+        const ticket = $("#gpTicket");
+        if (ticketContainer && ticket) {
+          ticketContainer.addEventListener("mousemove", (e) => {
+            const rect = ticketContainer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((centerY - y) / centerY) * 15;
+            const rotateY = ((x - centerX) / centerX) * 15;
+            
+            ticket.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+            ticket.style.boxShadow = `${-rotateY * 1.5}px ${rotateX * 1.5}px 30px rgba(0, 0, 0, 0.22)`;
+          });
+          
+          ticketContainer.addEventListener("mouseleave", () => {
+            ticket.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+            ticket.style.boxShadow = "";
+          });
+        }
+
+        // Tap to declassify celebration strategy
+        const celebrationRow = $("#ticketCelebrationRow");
+        const celebrationText = $("#ticketCelebration");
+        if (celebrationRow && celebrationText) {
+          celebrationRow.addEventListener("click", () => {
+            const isBlurred = celebrationText.style.filter !== "none";
+            celebrationText.style.filter = isBlurred ? "none" : "blur(5px)";
+            triggerHaptic(20);
+          });
+        }
       }
 
       function startCarTrail() {
@@ -1440,20 +2336,25 @@
 
       function init() {
         loadState();
-        state.name = "Shraddha";
+        loadNameFromURL();
+        applyTheme(state.theme);
+        updateAudioBtn();
+        
         if (state.date && state.date < todayISO()) state.date = "";
         renderFoods();
         renderTracks();
+        renderActivities();
+        renderCelebrations();
         renderFormValues();
         bindEvents();
         showScreen(state.screen || "landing");
         window.setInterval(createFloatingHeart, 220);
         startCarTrail();
+        startTelemetryLoop();
       }
 
       init();
     })();
   </script>
 </body>
-
 </html>
