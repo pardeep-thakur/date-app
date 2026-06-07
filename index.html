@@ -785,6 +785,45 @@
       }
     }
 
+    .beating-hearts-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .beating-heart {
+      font-size: 2.2rem;
+      display: inline-block;
+      animation: heart-beat 1.4s infinite ease-in-out;
+      filter: drop-shadow(0 4px 10px rgba(190, 18, 60, 0.25));
+    }
+
+    .red-heart {
+      animation-delay: 0s;
+    }
+
+    .pink-heart {
+      font-size: 3.2rem;
+      animation-delay: 0.15s;
+    }
+
+    @keyframes heart-beat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      20% {
+        transform: scale(1.28);
+      }
+      35% {
+        transform: scale(1.15);
+      }
+      50% {
+        transform: scale(1.36);
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
 
       *,
@@ -828,6 +867,11 @@
       <section class="panel" aria-live="polite">
         <article class="screen active" data-screen="landing">
           <div>
+            <div class="beating-hearts-container">
+              <span class="beating-heart red-heart">❤️</span>
+              <span class="beating-heart pink-heart">💖</span>
+              <span class="beating-heart red-heart">❤️</span>
+            </div>
             <p class="kicker">🏎️ Lights out and away we go!</p>
             <h1>Will you go on a date with me? 🏆</h1>
             <p class="lead">The championship-defining decision is here. Box now or push to the end.</p>
@@ -892,6 +936,11 @@
 
         <article class="screen" data-screen="confirmation">
           <div>
+            <div class="beating-hearts-container">
+              <span class="beating-heart red-heart">❤️</span>
+              <span class="beating-heart pink-heart">💖</span>
+              <span class="beating-heart red-heart">❤️</span>
+            </div>
             <p class="kicker">🏁 P1 - Checkered Flag</p>
             <h2>Yay! Our date is officially booked! 🏆</h2>
             <p class="lead">Calendar: updated. Fuel: optimized. Podium: secured.</p>
@@ -1091,6 +1140,7 @@
         elements.foodGrid.addEventListener("click", (event) => {
           const card = event.target.closest(".food-card");
           if (!card) return;
+          triggerHaptic(15);
           const foodLabel = card.dataset.food;
           const index = state.foods.indexOf(foodLabel);
           if (index > -1) {
@@ -1126,6 +1176,7 @@
         elements.trackGrid.addEventListener("click", (event) => {
           const card = event.target.closest(".food-card");
           if (!card) return;
+          triggerHaptic(15);
           state.track = card.dataset.track;
           elements.trackError.textContent = "";
           saveState();
@@ -1201,7 +1252,11 @@
         return true;
       }
 
-
+      function triggerHaptic(duration = 15) {
+        if (navigator.vibrate) {
+          navigator.vibrate(duration);
+        }
+      }
 
       function launchConfetti() {
         const colors = ["#ffffff", "#000000", "#e10600", "#facc15", "#be123c"];
@@ -1221,11 +1276,13 @@
       function createFloatingHeart() {
         const heart = document.createElement("span");
         heart.className = "heart";
-        heart.textContent = Math.random() > 0.45 ? "♥" : "♡";
+        const heartTypes = ["❤️", "💖", "💝", "💕", "💗", "💓", "💘", "♥", "♡", "💟"];
+        heart.textContent = heartTypes[Math.floor(Math.random() * heartTypes.length)];
         heart.style.left = `${Math.random() * 100}%`;
-        heart.style.fontSize = `${18 + Math.random() * 30}px`;
-        heart.style.animationDuration = `${7 + Math.random() * 7}s`;
-        heart.style.setProperty("--drift", `${-70 + Math.random() * 140}px`);
+        heart.style.fontSize = `${14 + Math.random() * 32}px`;
+        heart.style.opacity = `${0.3 + Math.random() * 0.7}`;
+        heart.style.animationDuration = `${5 + Math.random() * 8}s`;
+        heart.style.setProperty("--drift", `${-85 + Math.random() * 170}px`);
         elements.ambient.appendChild(heart);
         heart.addEventListener("animationend", () => heart.remove());
       }
@@ -1333,8 +1390,10 @@
 
           if (button.id === "yesBtn") {
             playEngineSound(0.08, 2.0, true);
+            triggerHaptic([40, 50, 45, 50, 60, 50, 90]);
           } else {
             playEngineSound(0.02, 0.65, false);
+            triggerHaptic(15);
           }
 
           if (button.dataset.back) {
@@ -1347,6 +1406,14 @@
         window.addEventListener("resize", () => {
           if (elements.noBtn.classList.contains("fleeing")) moveNoButton();
         });
+
+        // Global touchstart haptic feedback for all interactive elements
+        document.addEventListener("touchstart", (event) => {
+          const interactive = event.target.closest("button, input, select, textarea, .food-card");
+          if (interactive) {
+            triggerHaptic(12);
+          }
+        }, { passive: true });
       }
 
       function startCarTrail() {
@@ -1380,7 +1447,7 @@
         renderFormValues();
         bindEvents();
         showScreen(state.screen || "landing");
-        window.setInterval(createFloatingHeart, 620);
+        window.setInterval(createFloatingHeart, 220);
         startCarTrail();
       }
 
