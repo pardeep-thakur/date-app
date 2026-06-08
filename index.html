@@ -31,8 +31,26 @@
       --normal: 360ms var(--ease);
     }
 
-    * {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
+    }
+
+    h1,
+    h2,
+    p,
+    span,
+    label,
+    .lead,
+    .food-card,
+    .ticket-val,
+    #personalMsg,
+    .step-copy strong {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      word-break: break-word;
+      max-width: 100%;
     }
 
     html {
@@ -671,6 +689,41 @@
       .step-copy span {
         display: none;
       }
+
+      /* Prevent step label truncation on tablets/mobile */
+      .step-copy strong {
+        white-space: normal;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .shell {
+        padding: clamp(10px, 3vw, 20px);
+        gap: 16px;
+      }
+
+      .screen {
+        padding: clamp(16px, 4vw, 32px);
+      }
+
+      .stepper {
+        padding: 12px;
+        margin-bottom: 8px;
+      }
+
+      /* Stack action buttons vertically on mobile */
+      .actions {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .actions .btn {
+        width: 100%;
+        max-width: 280px;
+      }
     }
 
     @media (max-width: 720px) {
@@ -743,10 +796,6 @@
         color: var(--ink);
       }
 
-      .shell {
-        padding: 14px;
-      }
-
       .brand span:last-child {
         display: none;
       }
@@ -764,17 +813,9 @@
       .food-card {
         min-height: 106px;
       }
-
-      .actions {
-        gap: 10px;
-      }
-
-      .btn {
-        width: min(100%, 232px);
-      }
     }
 
-    @media (max-width: 460px) {
+    @media (max-width: 480px) {
       .topbar {
         align-items: flex-start;
       }
@@ -790,6 +831,11 @@
 
       .summary-row span:last-child {
         text-align: left;
+      }
+
+      /* Stack telemetry items in single column on narrow screens */
+      .telemetry-grid {
+        grid-template-columns: 1fr;
       }
     }
 
